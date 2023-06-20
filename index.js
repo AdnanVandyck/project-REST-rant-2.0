@@ -3,13 +3,17 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 
-// Routes
+// Engine
+app.set('view engine', 'jsx');
+app.engine('jsx', require('express-react-views').createEngine());
 
+// Routes
+// Controller
 app.use('/places', require('./controllers/places'))
 
 // Homepage
 app.get('/', (req, res) => {
-    res.send('Peace World!')
+    res.render('home')
 });
 
 // Wildcard
