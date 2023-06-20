@@ -4,6 +4,9 @@ const express = require('express');
 const app = express();
 
 // Routes
+
+app.use('/places', require('./controllers/places'))
+
 // Homepage
 app.get('/', (req, res) => {
     res.send('Peace World!')
