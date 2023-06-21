@@ -12,7 +12,9 @@ app.use(express.static('public'));
 
 // Routes
 // Controller
-app.use('/places', require('./controllers/places'))
+app.use(express.urlencoded({ extended: true}));
+app.use('/places', require('./controllers/places_controller'));
+
 
 // Homepage
 app.get('/', (req, res) => {
