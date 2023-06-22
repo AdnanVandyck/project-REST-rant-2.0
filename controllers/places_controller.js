@@ -12,9 +12,32 @@ router.get('/', (req, res) => {
     res.render('places/index', {places})
 })
 
+// EDIT
+router.get('/:id/edit', (req, res) => {
+  let id = Number(req.params.id)
+  if (isNaN(id)) {
+    res.render('error404')
+  }
+  else if (!places[id]) {
+    res.render('error404')
+  }
+  else{
+    res.render('places/edit', { place: places[id], id })
+  }
+})
+
 // Show Page Route
-router.get('/:id', (req,res) => {
-  res.render('places/show')
+router.get('/:id', (req, res) => {
+  let id = Number(req.params.id)
+  if (isNaN(id)) {
+    res.render('error404')
+  }
+  else if (!places[id]) {
+    res.render('error404')
+  }
+  else{
+    res.render('places/show', { place: places[id], id })
+  }
   })
 
 
@@ -35,6 +58,25 @@ router.post('/', (req, res) => {
   res.redirect('/places')
 });
 
+//UPDATE
+router.put('/:id', (req, res) => {
+  places[req.params.id] = req.body
+  res.redirect(`/places/${req.params.id}`)
+  })
+
+// DELETE
+  router.delete('/:id', (req, res) => {
+     let id = Number(req.params.id)
+  if (isNaN(id)) {
+    res.render('error404')
+  }
+  else if (!places[id]) {
+    res.render('error404')
+  }
+  else{
+    res.send('STUB delete places/:id')
+  }
+  })
 
 
 module.exports = router
