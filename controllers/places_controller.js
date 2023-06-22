@@ -74,7 +74,8 @@ router.put('/:id', (req, res) => {
     res.render('error404')
   }
   else{
-    res.send('STUB delete places/:id')
+    places.splice(id, 1)
+    res.redirect('/places')
   }
   })
 
