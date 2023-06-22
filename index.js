@@ -21,10 +21,17 @@ app.get('/', (req, res) => {
     res.render('home')
 });
 
+//Show Route
+app.get('/:id', (req, res) => {
+    res.send('places/show')
+});
+
 // Wildcard
 app.get('*', (req, res) => {
     res.render('error404')
 });
+
+
 
 
 //Listen for Connections
