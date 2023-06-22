@@ -73,7 +73,7 @@ router.put('/:id', (req, res) => {
   else if (!places[id]) {
     res.render('error404')
   }
-  else{
+  else {
     places.splice(id, 1)
     res.redirect('/places')
   }
